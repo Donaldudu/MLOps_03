@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    ports:
+      - "8000:5000"
+    volumes:
+      - .:/code # Maps local changes to the container
+    environment:
+      - FLASK_ENV=development # Enables auto-reload
+    depends_on:
+      - redis
+
+  redis:
+    image: "redis:alpine"
+ 
